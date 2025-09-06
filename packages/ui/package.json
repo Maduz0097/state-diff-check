@@ -1,0 +1,13 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "dependencies": {
+    "react": "^19.1.1",
+    "types": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.12"
+  }
+}
