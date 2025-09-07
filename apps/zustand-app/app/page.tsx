@@ -2,10 +2,14 @@
 
 import { UserCard } from "ui/UserCard";
 import { useUserStore } from "@/store/useUserStore";
+import {useRef} from "react";
 
 export default function Page() {
     const toggle = useUserStore((s) => s.toggleUser);
     const userIds = Object.keys(useUserStore((s) => s.users));
+    const renderCount = useRef(0);
+    renderCount.current += 1;
+    console.log(`Page renders: ${renderCount.current}`);
 
     return (
         <div className="p-4">
