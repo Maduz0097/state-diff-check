@@ -14,7 +14,8 @@
     "next": "15.5.2",
     "ui": "1.0.0",
     "types": "1.0.0",
-    "zustand": "^5.0.0"
+    "zustand": "^5.0.0",
+    "utils": "1.0.0"
   },
   "devDependencies": {
     "typescript": "^5",
