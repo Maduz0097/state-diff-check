@@ -1,28 +1,25 @@
 "use client";
 
-import { UserCard } from "ui/UserCard";
-import { useUserStore } from "@/store/useUserStore";
-import {useRef} from "react";
+import {useUserKeys, useUserStore} from "@/store/useUserStore";
+import {ZustandUserCard} from "@/components/ZustandUserCard";
 
 export default function Page() {
-    const toggle = useUserStore((s) => s.toggleUser);
-    const userIds = Object.keys(useUserStore((s) => s.users));
-    const renderCount = useRef(0);
-    renderCount.current += 1;
-    console.log(`Page renders: ${renderCount.current}`);
+
+    const usersObj = useUserKeys();
+    const ids = Object.keys(usersObj).map(Number); // map to numbers in component
 
     return (
         <div className="p-4">
             <h1 className="text-xl font-bold mb-4">Zustand App</h1>
-            {userIds.map((id) => (
-                <UserItem key={id} id={+id} toggle={toggle} />
+            {ids.map((id) => (
+                <ZustandUserCard key={id} id={id} />
             ))}
         </div>
     );
 }
 
 
-const UserItem = ({ id, toggle }: { id: number; toggle: (id: number) => void }) => {
-    const user = useUserStore((s) => s.users[id]);
-    return <UserCard user={user} toggle={() => toggle(id)} />;
-};
+// const UserItem = ({ id, toggle }: { id: number; toggle: (id: number) => void }) => {
+//     const user = useUserStore((s) => s.users[id]);
+//     return <UserCard user={user} toggle={() => toggle(id)} />;
+// };
